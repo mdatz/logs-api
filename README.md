@@ -12,7 +12,7 @@ This application uses the Java Spring Boot framework as a RESTful API, MongoDB h
 
 The REST API and it's available calls are described below.
 
-## Get a filtered list of logs
+## Get A Filtered List Of Logs
 
 ### Request
 
@@ -65,7 +65,7 @@ The REST API and it's available calls are described below.
 ```
 
 
-## Create a new log action
+## Create A New Log Action
 
 ### Request
 
@@ -78,4 +78,18 @@ The REST API and it's available calls are described below.
 ```json
 {"result": "success"}
 ```
-    
+
+
+## Retrieve Last Weeks Logs
+
+### Request
+
+`POST /logs/[sessionId]/[userId]`
+
+    curl -i -H 'Accept: application/json' -d 'time=2018-10-18T21:37:30-06:00&type=VIEW&properties={viewedId: "FDJKLHSLD"}' http://localhost:7000/logs/XYZ456ABC
+
+### Response
+
+```json
+{"result": "success"}
+```
