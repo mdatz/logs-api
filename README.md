@@ -236,3 +236,22 @@ This endpoint is for sending large actions in batchs to be added to a Log. Like 
    }]
 }
 ```
+
+
+## Follow Up Questions
+- Provide your comments on how you would make this solution cloud-scalable?
+  - I would first start by adding a load balancer to the Heroku app to help deal with the surge of requests. This way we can be sure the app will be able to handle any additional request as the load balancer will scale the application out horizontally until demands are met.
+  - Some of the filtering logic could be refined down to use MongoDB's aggregate function to build the query, instead of manual post processing of embedded documents.
+- Is your code well tested?
+  - Manually yes, but no automated JUnit tests or anything have been made due to time constraints (this was my first foray into Spring Boot API's)
+- Is the service performant for the use cases provided?
+  - There does seem to be a cold start on the app if it hasn't been called recently, but due to the 5 min interval for batch calls this should keep the application alive between calls so cold start is only a factor on the first request!
+- Is the data stored efficiently?
+  - Yes, it is layed out in the MongoDB Container in the exact same way the sample log is layed out.
+  - I chose MongoDB to make the data a little more straightforward to work with, specifically the array of actions in each log document as the schema needed some flexibility.
+- Do you provide error handling and appropriate REST status codes?
+  - Somewhat, http status codes return as expected, but error handling could be greatly improved (Again time constraints)
+- Is the code deployable?
+  - Yes! it's live at <a>https://openhouse-log-api.herokuapp.com/logs/</a>  
+
+  
