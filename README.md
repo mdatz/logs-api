@@ -1,5 +1,5 @@
 # Openhouse.ai Interview Challenge - [Backend Developer]
-This is a repository for an interview challenge question at Openhouse.ai.
+This is a repository for an interview challenge question at Openhouse.ai. The demo is currently hosted as a live Heroku app for your convenience @ <a>https://openhouse-log-api.herokuapp.com/logs/</a> I recommend playing around with the query parameters in the browser to test the filtering functionality, and postman for sending batch requests for actions and other calls.
 
 ## Architecture Overview
 This application uses the Java Spring Boot framework as a RESTful API, MongoDB hosted on MongoDB Atlas for log storage, and Heroku as a quick and easy cloud provider for our API.
