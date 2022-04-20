@@ -189,7 +189,7 @@ This endpoint is for sending large actions in batchs to be added to a Log. Like 
 
 ```json
 {
-  "batch": [
+  "actions": [
     {
       "time":"2018-10-24T21:37:28-06:00"
       "type":"CLICK"
