@@ -20,7 +20,7 @@ The REST API and it's available calls are described below.
 
     curl -i -H 'Accept: application/json' http://localhost:7000/logs?users=ABC123XYZ,XYZ123ABC&types=CLICK
 
-#### Query Filter Parameters
+### Query Filter Parameters
 
 - <b>users</b>: [Array of User Id's] - This parameter will filter out the results to only contain logs from the specified user array (Optional)
 - <b>types</b>: [Array of Type's] - This parameter will filter out the results to only contain logs of the matching type (Optional)
