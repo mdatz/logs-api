@@ -64,6 +64,71 @@ The REST API and it's available calls are described below.
 ]
 ```
 
+### Example Request - Get A Weeks Logs
+
+`GET <a>https://openhouse-log-api.herokuapp.com/logs/?start=2018-10-18&end=2018-10-22</a>
+    
+### Example Response
+
+```json
+[
+  {
+    "id": "625f2b756d0820fdd7b9e3d3",
+    "userId": "ABC123XYZ",
+    "sessionId": "XYZ456ABC",
+    "actions": [
+      {
+        "time": "2018-10-18T21:37:28-06:00",
+        "type": "CLICK",
+        "properties": {
+          "locationX": 52,
+          "locationY": 11
+        }
+      },
+      {
+        "time": "2018-10-18T21:37:30-06:00",
+        "type": "VIEW",
+        "properties": {
+          "viewedId": "FDJKLHSLD"
+        }
+      },
+      {
+        "time": "2018-10-18T21:37:30-06:00",
+        "type": "NAVIGATE",
+        "properties": {
+          "pageFrom": "communities",
+          "pageTo": "inventory"
+        }
+      }
+    ]
+  },
+  {
+    "id": "625f5ab26d0820fdd7b9e3d5",
+    "userId": "XYZ123ABC",
+    "sessionId": "789XYZ123",
+    "actions": [
+      {
+        "time": "2018-10-20T21:37:28-06:00",
+        "type": "CLICK",
+        "properties": {
+          "locationX": 120,
+          "locationY": 40
+        }
+      },
+      {
+        "time": "2018-10-21T21:37:30-06:00",
+        "type": "VIEW",
+        "properties": {
+          "viewedId": "ABC123"
+        }
+      }
+    ]
+  }
+] 
+  
+```
+
+
 
 ## Create A New Log Action
 
@@ -71,7 +136,7 @@ The REST API and it's available calls are described below.
 
 `POST /logs/[sessionId]/[userId]`
 
-    curl -X POST http://localhost:8080/logs/000ABC123/321CBA000 -H 'Content-Type: application/json' -d '{"time":"2018-10-25T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}'
+    curl -X POST https://openhouse-log-api.herokuapp.com/logs/000ABC123/321CBA000 -H 'Content-Type: application/json' -d '{"time":"2018-10-25T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}'
 
 ### Response
 
@@ -106,7 +171,7 @@ The REST API and it's available calls are described below.
 
 `POST /logs/[sessionId]/[userId]/batch`
 
-    curl -X POST http://localhost:8080/logs/000ABC123/321CBA000 -H 'Content-Type: application/json' -d '[{"time":"2018-10-24T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}, {"time":"2018-10-29T21:37:28-06:00","type":"CLICK","properties":{"locationX": 456,"locationY": 123}}]'
+    curl -X POST https://openhouse-log-api.herokuapp.com/logs/000ABC123/321CBA000/batch -H 'Content-Type: application/json' -d '{"actions":[{"time":"2018-10-24T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}, {"time":"2018-10-29T21:37:28-06:00","type":"CLICK","properties":{"locationX": 456,"locationY": 123}}]}'
 
 ### Response
 
