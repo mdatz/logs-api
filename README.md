@@ -252,6 +252,9 @@ This endpoint is for sending large actions in batchs to be added to a Log. Like 
 - Do you provide error handling and appropriate REST status codes?
   - Somewhat, http status codes return as expected, but error handling could be greatly improved (Again time constraints)
 - Is the code deployable?
-  - Yes! it's live at <a>https://openhouse-log-api.herokuapp.com/logs/</a>  
+  - Yes! it's live at <a>https://openhouse-log-api.herokuapp.com/logs/</a>
+
+## Other Comments
+- I have removed the MongoDB connection string from the repo, if you would like to run it locally you can either create your own MongoDB instance to connect to, or email me and I can give you a temporary user and password for connecting to my existing MongoDB!
 
   
