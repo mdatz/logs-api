@@ -21,13 +21,15 @@ The REST API to the example app is described below.
     curl -i -H 'Accept: application/json' http://localhost:7000/logs?users=ABC123XYZ,XYZ123ABC&types=CLICK
 
 #### Query Filter Parameters
-- users: [Array of User Id's] - This parameter will filter out the results to only contain logs from the specified user array (Optional)
-- types: [Array of Type's] - This parameter will filter out the results to only contain logs of the matching type (Optional)
-- start: Date (YYYY-MM-DD) - This parameter will filter the results to contain logs AFTER the specified start date (Optional)
-- end: Date (YYYY-MM-DD) - This  parameter will filter the results to contain logs BEFORE the specified start date (Optional)
+
+- <b>users</b>: [Array of User Id's] - This parameter will filter out the results to only contain logs from the specified user array (Optional)
+- <b>types</b>: [Array of Type's] - This parameter will filter out the results to only contain logs of the matching type (Optional)
+- <b>start</b>: Date (YYYY-MM-DD) - This parameter will filter the results to contain logs AFTER the specified start date (Optional)
+- <b>end</b>: Date (YYYY-MM-DD) - This  parameter will filter the results to contain logs BEFORE the specified start date (Optional)
 
 ### Response
 
+```json
 [
   {
     "id": "625f2b756d0820fdd7b9e3d3",
@@ -60,6 +62,8 @@ The REST API to the example app is described below.
     ]
   }
 ]
+```
+
 
 ## Create a new log
 
