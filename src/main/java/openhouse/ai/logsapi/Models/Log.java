@@ -55,6 +55,15 @@ public class Log {
         this.actions = actions;
     }
 
+    public void addAction(Action action) {
+        
+        System.out.println(action);
+
+        //Add the action to the list of actions
+        this.actions.add(action);
+
+    }
+
     @Override
     public String toString() {
         return "Log{" +

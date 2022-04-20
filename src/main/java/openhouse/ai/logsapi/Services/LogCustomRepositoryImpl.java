@@ -43,13 +43,13 @@ public class LogCustomRepositoryImpl implements LogCustomRepository {
 
             //Loop through items and post process the nested documents
             for(int i = items.size() - 1; i >= 0; i--) {
-                
+                    
                 //Current item
                 Log item = items.get(i);
 
                 //Loop through actions and remove any that don't have the correct types
                 for(int j = item.getActions().size() - 1; j >= 0; j--) {
-                    
+                        
                     Action action = item.getActions().get(j);
 
                     if(types != null && Arrays.asList(types).contains(action.getType()) == false) {
@@ -66,13 +66,38 @@ public class LogCustomRepositoryImpl implements LogCustomRepository {
 
                 }
             }
-
+            
             return items;
 
         }else{
+
             return mongoTemplate.findAll(Log.class);
+
+        }
+    }
+
+    public Log addLogAction(String userId, String sessionId, Action action) {
+        
+        //Check if the userId and sessionId already exist
+        final Query query = new Query();
+
+        query.addCriteria(Criteria.where("userId").is(userId));
+        query.addCriteria(Criteria.where("sessionId").is(sessionId));
+
+        Log item = mongoTemplate.findOne(query, Log.class);
+
+        if(item == null) {
+            //Create a new log
+            item = new Log(userId, sessionId, new ArrayList<Action>());
         }
 
+        //Add the action
+        item.addAction(action);
+
+        //Save the log
+        mongoTemplate.save(item);
+
+        return item;
     }
 
 }
