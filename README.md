@@ -8,11 +8,11 @@ This application uses the Java Spring Boot framework as a RESTful API, MongoDB h
   <img width="600" src="https://user-images.githubusercontent.com/26133178/164140847-139dc4c9-00fd-4b6e-a32c-771a104d5b7b.png">
 </p>
 
-## REST API
+# REST API
 
-The REST API to the example app is described below.
+The REST API and it's available calls are described below.
 
-## Get list of logs
+## Get a filtered list of logs
 
 ### Request
 
@@ -65,7 +65,7 @@ The REST API to the example app is described below.
 ```
 
 
-## Create a new log
+## Create a new log action
 
 ### Request
 
@@ -75,12 +75,7 @@ The REST API to the example app is described below.
 
 ### Response
 
-    HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 201 Created
-    Connection: close
-    Content-Type: application/json
-    Location: /thing/1
-    Content-Length: 36
-
-    {"result": "success"}
+```json
+{"result": "success"}
+```
+    
