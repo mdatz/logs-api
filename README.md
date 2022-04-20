@@ -1,4 +1,4 @@
-# Openhouse.ai_Challenge
+# Openhouse.ai Interview Challenge - [Backend Developer]
 This is a repository for an interview challenge question at Openhouse.ai.
 
 ## Architecture Overview
