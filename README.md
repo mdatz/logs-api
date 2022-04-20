@@ -14,6 +14,8 @@ The REST API and it's available calls are described below.
 
 ## Get A Filtered List Of Logs
 
+This API route fetches all the logs if no query parameters are passed, otherwise the query filter parameters can be used in any combination to refine the log search results. Additionally, lists of users can be passed in as comma seperated values (?users=userIdA,userIdB) and lists of types can be used in the same fashion (?types=CLICK,NAVIGATE). 
+
 ### Request
 
 `GET /logs/`
@@ -64,7 +66,10 @@ The REST API and it's available calls are described below.
 ]
 ```
 
+
+
 ### Example Request - Get A Weeks Logs
+This example link calls the api between a date range of 7 days, this can be used by other applications who wish to have better granularity over date ranges.
 
 `GET <a>https://openhouse-log-api.herokuapp.com/logs/?start=2018-10-18&end=2018-10-22</a>
     
@@ -132,6 +137,19 @@ The REST API and it's available calls are described below.
 
 ## Create A New Log Action
 
+This endpoint is for adding a single action to a logs list of actions (See Batch endpoint below for batch action uploads). If the UserId and SessionId do not exist, a new Log will be automatically created. Otherwise, if the UserId and SessionId exist in a log the activity is added to the logs activities. The basic JSON request body looks something like this:
+
+```json
+{
+  "time":"2018-10-24T21:37:28-06:00"
+  "type":"CLICK"
+  "properties":{
+    "locationX": 690,
+    "locationY": 105
+  }
+}
+```
+
 ### Request
 
 `POST /logs/[sessionId]/[userId]`
@@ -166,6 +184,26 @@ The REST API and it's available calls are described below.
 
 
 ## Create A New Log Action Batch
+
+This endpoint is for sending large actions in batchs to be added to a Log. Like the singular addition endpoint, a new Log will be created if the SessionId and UserId do not already exist. The JSON body has a structure like:
+
+```json
+{
+  "batch": [
+    {
+      "time":"2018-10-24T21:37:28-06:00"
+      "type":"CLICK"
+      "properties":{
+        "locationX": 690,
+        "locationY": 105
+      }
+    },
+    {
+      "More": "Actions..."
+    }
+   ]
+}
+```
 
 ### Request
 
