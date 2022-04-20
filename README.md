@@ -104,7 +104,7 @@ The REST API and it's available calls are described below.
 
 ### Request
 
-`POST /logs/[sessionId]/[userId]`
+`POST /logs/[sessionId]/[userId]/batch`
 
     curl -X POST http://localhost:8080/logs/000ABC123/321CBA000 -H 'Content-Type: application/json' -d '[{"time":"2018-10-24T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}, {"time":"2018-10-29T21:37:28-06:00","type":"CLICK","properties":{"locationX": 456,"locationY": 123}}]'
 
