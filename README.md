@@ -71,7 +71,7 @@ This API route fetches all the logs if no query parameters are passed, otherwise
 ### Example Request - Get A Weeks Logs
 This example link calls the api between a date range of 7 days, this can be used by other applications who wish to have better granularity over date ranges.
 
-`GET <a>https://openhouse-log-api.herokuapp.com/logs/?start=2018-10-18&end=2018-10-22</a>
+`GET https://openhouse-log-api.herokuapp.com/logs/?start=2018-10-18&end=2018-10-22` [<a href="https://openhouse-log-api.herokuapp.com/logs/?start=2018-10-18&end=2018-10-22">Browser Link</a>]
     
 ### Example Response
 
