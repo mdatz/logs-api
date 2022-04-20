@@ -18,7 +18,7 @@ The REST API and it's available calls are described below.
 
 `GET /logs/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/logs?users=ABC123XYZ,XYZ123ABC&types=CLICK
+    curl -i -H 'Accept: application/json' https://openhouse-log-api.herokuapp.com/logs/?users=ABC123XYZ,XYZ123ABC&types=CLICK
 
 ### Query Filter Parameters
 
@@ -71,25 +71,65 @@ The REST API and it's available calls are described below.
 
 `POST /logs/[sessionId]/[userId]`
 
-    curl -i -H 'Accept: application/json' -d 'time=2018-10-18T21:37:30-06:00&type=VIEW&properties={viewedId: "FDJKLHSLD"}' http://localhost:7000/logs/XYZ456ABC
+    curl -X POST http://localhost:8080/logs/000ABC123/321CBA000 -H 'Content-Type: application/json' -d '{"time":"2018-10-25T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}'
 
 ### Response
 
 ```json
-{"result": "success"}
+{
+  "id":"625f97bea2d4765be423f776",
+  "userId":"000ABC123",
+  "sessionId":"321CBA000",
+  "actions":[{
+      "time":"2018-10-25T21:37:28-06:00",
+      "type":"CLICK",
+      "properties":{
+        "locationX":1001,
+        "locationY":578
+       }
+     },
+     {
+      "time":"2018-10-25T21:37:28-06:00",
+      "type":"CLICK",
+      "properties":{
+        "locationX":1920,
+        "locationY":1080
+       }
+   }]
+}
 ```
 
 
-## Retrieve Last Weeks Logs
+## Create A New Log Action Batch
 
 ### Request
 
 `POST /logs/[sessionId]/[userId]`
 
-    curl -i -H 'Accept: application/json' -d 'time=2018-10-18T21:37:30-06:00&type=VIEW&properties={viewedId: "FDJKLHSLD"}' http://localhost:7000/logs/XYZ456ABC
+    curl -X POST http://localhost:8080/logs/000ABC123/321CBA000 -H 'Content-Type: application/json' -d '[{"time":"2018-10-24T21:37:28-06:00","type":"CLICK","properties":{"locationX": 1001,"locationY": 578}}, {"time":"2018-10-29T21:37:28-06:00","type":"CLICK","properties":{"locationX": 456,"locationY": 123}}]'
 
 ### Response
 
 ```json
-{"result": "success"}
+{
+  "id":"625f97bea2d4765be423f776",
+  "userId":"000ABC123",
+  "sessionId":"321CBA000",
+  "actions":[{
+      "time":"2018-10-25T21:37:28-06:00",
+      "type":"CLICK",
+      "properties":{
+        "locationX":1001,
+        "locationY":578
+       }
+     },
+     {
+      "time":"2018-10-25T21:37:28-06:00",
+      "type":"CLICK",
+      "properties":{
+        "locationX":1920,
+        "locationY":1080
+       }
+   }]
+}
 ```
